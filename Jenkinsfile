@@ -8,7 +8,7 @@ pipeline{
      }
      stage('two'){
          steps{
-         input('do u want to proceed?)
+         input('do u want to proceed?')
      }
      }
      stage('three'){
@@ -20,7 +20,7 @@ pipeline{
       }
       }
      stage('four'){
-        parrallel{
+        parallel{
           stage('unittest'){
           steps{
             echo "runing unittest"
