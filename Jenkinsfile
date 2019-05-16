@@ -33,8 +33,7 @@ pipeline {
                                                                   docker {
                                                                          reuseNode false
                                                                          image 'ubuntu'
-                                                                   }
-                                                           }
+                                                            }
                                                            steps {
                                                                  echo "runnig integraion test"
                                                            }
