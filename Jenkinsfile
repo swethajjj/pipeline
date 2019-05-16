@@ -39,6 +39,7 @@ pipeline{
           echo "runnig integraion test"
         }
         }
+        }
    }
    }
    }
