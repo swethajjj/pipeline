@@ -1,44 +1,47 @@
 pipeline {
-     agent any
-             stages {
-                    stage('one') {
-                             steps {
+        agent any
+                stages {
+                       stage('one') {
+                               steps {
                                     echo "hi this is swetha"
-                             }
-                    }
-                    stage('two') {
+                               }
+                       }
+                       stage('two') {
                                steps {
                                       input('do u want to proceed?')
                                }
-                    }
-                    stage('three') {
-                             when {
-                                    not {
-                                           branch "master"
-                                    }
-                             }
+                      }
+                      stage('three') {
+                              when {
+                                      not {
+                                             branch "master"
+                                     }
+                             } 
                              steps {
                                     echo "hello"
                              }
-                    }
-                    stage('four') {
-                                   parallel {
-                                        stage('unittest') {
-                                                            steps {
-                                                                   echo "runing unittest"
-                                                            }
-                                        }
-                                        stage('integrationtest') {
-                                                                 docker {
-                                                                         reuseNode false
-                                                                         image 'ubuntu'
-                                                            }
-                                                           steps {
-                                                                 echo "runnig integraion test"
-                                                           }
-                                        }
+                      }
+                      stage('four') {
+                                      parallel {
+                                           stage('unit test') {
+                                                              steps {
+                                                                   echo "runing unit test"
+                                                              }
+                                           } 
+                                           stage('integration test') {
+                                                              agent {
+                                                                     docker {
+                                                                             reuseNode false
+                                                                             image 'ubuntu'
+                                                                      }
+                                                              }
+                                                              steps {
+                                                                    echo "runnig integraion test"
+                                                              }
+                                           }
                                     }
-                    
+                      }
+                }
    }
    }
    }
