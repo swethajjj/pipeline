@@ -1,4 +1,4 @@
- pipelines {
+ pipeline {
         agent any
                 stages {
                        stage('one') {
@@ -25,7 +25,7 @@
                                       parallel {
                                            stage('unit test') {
                                                               steps {
-                                                                   echo "runing unit test"
+                                                                   echo "runing unit tests"
                                                               }
                                            } 
                                            stage('integration test') {
